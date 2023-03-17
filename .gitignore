@@ -1,0 +1,8 @@
+# Project exclude paths
+/src/server/routes/appRouter.js
+/src/server/schema/contactSchema.js
+/src/server/schema/userSchema.js
+/src/server/service/contactService.js
+/src/server/utils/handleError.js
+/src/server/utils/handleStatus.js
+/src/server/server.js
