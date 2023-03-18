@@ -1,4 +1,4 @@
-import { Dispatch, FC, SetStateAction, useState } from "react";
+import { Dispatch, FC, SetStateAction, useEffect, useState } from "react";
 import { handleCancelChanges } from "../../utils/handleCancelChanges";
 import { handleDisableAddButton } from "../../utils/handleDisableAddButton";
 import { handleSaveChanges } from "../../utils/handleSaveChanges";
@@ -25,15 +25,35 @@ const ContactDetails: FC<ContactDetailsProps> = ({
   onClose,
   deleteSelectedContact,
 }) => {
-  const [isEditable, setIsEditable] = useState<boolean>(false);
   if (selectedContact === null || setSelectedContact === null) return null;
+  const [isEditable, setIsEditable] = useState<boolean>(false);
+  const [disableSaveButton, setDisableSaveButton] = useState<boolean>(true);
   const [copySelectedContact, setCopySelectedContact] =
     useState<ContactData>(selectedContact);
+
+  useEffect(() => {
+    if (isEditable && disableSaveButton) {
+      setDisableSaveButton(false);
+    } else if (!isEditable && !disableSaveButton) {
+      setDisableSaveButton(true);
+    }
+  }, [copySelectedContact, selectedContact]);
 
   return (
     <div className="flex h-full w-full flex-col break-words bg-Oxford-Blue text-white">
       {isEditable && <Title text={"Edit contact"} />}
-      <div
+      <form
+        onSubmit={(e) =>
+          handleSaveChanges({
+            e,
+            contacts,
+            selectedContact,
+            copySelectedContact,
+            setIsEditable,
+            setContacts,
+            setSelectedContact,
+          })
+        }
         className={`${
           !isEditable && "flex-1 sm:justify-evenly"
         } my-auto flex flex-col items-center justify-between overflow-auto px-1 py-2 sm:py-4`}
@@ -87,18 +107,11 @@ const ContactDetails: FC<ContactDetailsProps> = ({
             <>
               <ActionButton
                 text={"Save"}
-                onClick={() =>
-                  handleSaveChanges({
-                    contacts,
-                    selectedContact,
-                    copySelectedContact,
-                    setIsEditable,
-                    setContacts,
-                    setSelectedContact,
-                  })
-                }
                 color={"green"}
-                disableStateButton={handleDisableAddButton(copySelectedContact)}
+                disableStateButton={
+                  handleDisableAddButton(copySelectedContact) ||
+                  disableSaveButton
+                }
               />
               <ActionButton
                 text={"Delete"}
@@ -119,7 +132,7 @@ const ContactDetails: FC<ContactDetailsProps> = ({
             </>
           )}
         </div>
-      </div>
+      </form>
     </div>
   );
 };

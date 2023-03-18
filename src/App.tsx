@@ -8,7 +8,7 @@ import Footer from "./components/major/Footer";
 import Header from "./components/major/Header";
 import Navbar from "./components/major/Navbar";
 import ErrorPage from "./pages/ErrorPage";
-import FormPage from "./pages/FormPage";
+import LoginPage from "./pages/LoginPage";
 import MainPage from "./pages/MainPage";
 import PrivateRoute from "./pages/PrivateRoute";
 import { getUserIp } from "./utils/getUserIp";
@@ -109,7 +109,7 @@ const App: FC = () => {
           <Route
             path="/"
             element={
-              isLoading ? null : <FormPage showLoginForm={showLoginForm} />
+              isLoading ? null : <LoginPage showLoginForm={showLoginForm} />
             }
           />
           <Route

@@ -17,7 +17,7 @@ type RegisterProps = {
   showLoginForm: boolean;
 };
 
-const FormPage: FC<RegisterProps> = ({ showLoginForm }) => {
+const LoginPage: FC<RegisterProps> = ({ showLoginForm }) => {
   const [registerData, setRegisterData] = useState<RegisterFormData>({
     id: uuidv4(),
     fullName: "",
@@ -98,4 +98,4 @@ const FormPage: FC<RegisterProps> = ({ showLoginForm }) => {
   );
 };
 
-export default FormPage;
+export default LoginPage;
