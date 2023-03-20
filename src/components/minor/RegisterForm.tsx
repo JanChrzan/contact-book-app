@@ -1,4 +1,4 @@
-import { Dispatch, FC, SetStateAction } from "react";
+import { ChangeEvent, Dispatch, FC, SetStateAction, useCallback } from "react";
 import { handleChangeFormInputs } from "../../utils/handleChangeFormInputs";
 import { RegisterFormData } from "../../utils/types/TypeRegisterFormData";
 import { validateEmail } from "../../utils/validators/validateEmail";
@@ -16,6 +16,15 @@ const RegisterForm: FC<RegisterFormProps> = ({
   registerData,
   setRegisterData,
 }) => {
+  const handleChangeFormInputsUseCallback = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) =>
+      handleChangeFormInputs({
+        e,
+        data: registerData,
+        setData: setRegisterData,
+      }),
+    [registerData]
+  );
   return (
     <>
       <FormInput
@@ -23,10 +32,7 @@ const RegisterForm: FC<RegisterFormProps> = ({
         name={"fullName"}
         type={"text"}
         value={registerData.fullName}
-        onChange={handleChangeFormInputs({
-          data: registerData,
-          setData: setRegisterData,
-        })}
+        onChange={handleChangeFormInputsUseCallback}
         validator={() => validateFullName(registerData.fullName)}
       />
       <FormInput
@@ -34,10 +40,7 @@ const RegisterForm: FC<RegisterFormProps> = ({
         name={"email"}
         type={"email"}
         value={registerData.email}
-        onChange={handleChangeFormInputs({
-          data: registerData,
-          setData: setRegisterData,
-        })}
+        onChange={handleChangeFormInputsUseCallback}
         validator={() => validateEmail(registerData.email)}
       />
       <FormInput
@@ -45,10 +48,7 @@ const RegisterForm: FC<RegisterFormProps> = ({
         name={"password"}
         type={"password"}
         value={registerData.password}
-        onChange={handleChangeFormInputs({
-          data: registerData,
-          setData: setRegisterData,
-        })}
+        onChange={handleChangeFormInputsUseCallback}
         validator={() => validatePassword(registerData.password)}
       />
       <FormInput
@@ -56,10 +56,7 @@ const RegisterForm: FC<RegisterFormProps> = ({
         name={"secondPassword"}
         type={"password"}
         value={registerData.secondPassword}
-        onChange={handleChangeFormInputs({
-          data: registerData,
-          setData: setRegisterData,
-        })}
+        onChange={handleChangeFormInputsUseCallback}
         validator={() =>
           validateSecondPassword(
             registerData.password,

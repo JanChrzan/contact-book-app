@@ -1,4 +1,4 @@
-import { Dispatch, FC, SetStateAction } from "react";
+import { ChangeEvent, Dispatch, FC, SetStateAction, useCallback } from "react";
 import { handleChangeFormInputs } from "../../utils/handleChangeFormInputs";
 import { LoginFormData } from "../../utils/types/TypeLoginFormData";
 import { validateEmail } from "../../utils/validators/validateEmail";
@@ -11,6 +11,12 @@ export type LoginFormProps = {
 };
 
 const LoginForm: FC<LoginFormProps> = ({ loginData, setLoginData }) => {
+  const handleChangeFormInputsUseCallback = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) =>
+      handleChangeFormInputs({ e, data: loginData, setData: setLoginData }),
+    [loginData]
+  );
+
   return (
     <>
       <FormInput
@@ -18,10 +24,7 @@ const LoginForm: FC<LoginFormProps> = ({ loginData, setLoginData }) => {
         name={"email"}
         type={"email"}
         value={loginData.email}
-        onChange={handleChangeFormInputs({
-          data: loginData,
-          setData: setLoginData,
-        })}
+        onChange={handleChangeFormInputsUseCallback}
         validator={() => validateEmail(loginData.email)}
       />
       <FormInput
@@ -29,10 +32,7 @@ const LoginForm: FC<LoginFormProps> = ({ loginData, setLoginData }) => {
         name={"password"}
         type={"password"}
         value={loginData.password}
-        onChange={handleChangeFormInputs({
-          data: loginData,
-          setData: setLoginData,
-        })}
+        onChange={handleChangeFormInputsUseCallback}
         validator={() => validatePassword(loginData.password)}
       />
     </>

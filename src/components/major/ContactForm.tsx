@@ -1,6 +1,14 @@
-import { Dispatch, FC, SetStateAction, useEffect, useState } from "react";
-import { handleFirstNameAndLastNameInput } from "../../utils/handleFirstNameAndLastNameInput";
+import {
+  ChangeEvent,
+  Dispatch,
+  FC,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
 import { handleChangeFormInputs } from "../../utils/handleChangeFormInputs";
+import { handleFirstNameAndLastNameInput } from "../../utils/handleFirstNameAndLastNameInput";
 import { ContactData } from "../../utils/types/TypeContactData";
 import { validateEmail } from "../../utils/validators/validateEmail";
 import { validateFullName } from "../../utils/validators/validateFullName";
@@ -24,6 +32,26 @@ const ContactForm: FC<AddContactProps> = ({ data, setData }) => {
     fullName.split(" ")[1] || ""
   );
 
+  const handleFirstNameAndLastNameInputUseCallback = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) =>
+      handleFirstNameAndLastNameInput({
+        e,
+        firstName,
+        setFirstName,
+        lastName,
+        setLastName,
+        data,
+        setData,
+      }),
+    [firstName, lastName, data]
+  );
+
+  const handleChangeFormInputsUseCallback = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) =>
+      handleChangeFormInputs({ e, data, setData }),
+    [data]
+  );
+
   useEffect(() => {
     if (fullName === "") {
       setFirstName("");
@@ -39,14 +67,7 @@ const ContactForm: FC<AddContactProps> = ({ data, setData }) => {
           name={"First"}
           type={"text"}
           value={firstName}
-          onChange={handleFirstNameAndLastNameInput({
-            firstName,
-            setFirstName,
-            lastName,
-            setLastName,
-            data,
-            setData,
-          })}
+          onChange={handleFirstNameAndLastNameInputUseCallback}
           validator={() => validateFullName(firstName)}
         />
         <FormInput
@@ -54,14 +75,7 @@ const ContactForm: FC<AddContactProps> = ({ data, setData }) => {
           name={"Last"}
           type={"text"}
           value={lastName}
-          onChange={handleFirstNameAndLastNameInput({
-            firstName,
-            setFirstName,
-            lastName,
-            setLastName,
-            data,
-            setData,
-          })}
+          onChange={handleFirstNameAndLastNameInputUseCallback}
           validator={() => validateFullName(lastName)}
         />
       </div>
@@ -71,7 +85,7 @@ const ContactForm: FC<AddContactProps> = ({ data, setData }) => {
           name={"email"}
           type={"email"}
           value={data.email}
-          onChange={handleChangeFormInputs({ data, setData })}
+          onChange={handleChangeFormInputsUseCallback}
           validator={() => validateEmail(data.email)}
         />
         <FormInput
@@ -79,7 +93,7 @@ const ContactForm: FC<AddContactProps> = ({ data, setData }) => {
           name={"phoneNumber"}
           type={"tel"}
           value={data.phoneNumber}
-          onChange={handleChangeFormInputs({ data, setData })}
+          onChange={handleChangeFormInputsUseCallback}
           validator={() => validatePhoneNumber(data.phoneNumber)}
         />
       </div>
@@ -89,7 +103,7 @@ const ContactForm: FC<AddContactProps> = ({ data, setData }) => {
           name={"address"}
           type={"text"}
           value={data.address}
-          onChange={handleChangeFormInputs({ data, setData })}
+          onChange={handleChangeFormInputsUseCallback}
           validator={() => validateInputLength(data.address)}
         />
         <FormInput
@@ -97,7 +111,7 @@ const ContactForm: FC<AddContactProps> = ({ data, setData }) => {
           name={"notes"}
           type={"text"}
           value={data.notes}
-          onChange={handleChangeFormInputs({ data, setData })}
+          onChange={handleChangeFormInputsUseCallback}
           validator={() => validateInputLength(data.notes)}
         />
       </div>

@@ -1,7 +1,8 @@
-import { ChangeEvent, Dispatch, SetStateAction, useCallback } from "react";
+import { ChangeEvent, Dispatch, SetStateAction } from "react";
 import { ContactData } from "./types/TypeContactData";
 
 interface handleFirstNameAndLastNameInputProps {
+  e: ChangeEvent<HTMLInputElement>;
   firstName: string;
   setFirstName: Dispatch<SetStateAction<string>>;
   lastName: string;
@@ -13,6 +14,7 @@ interface handleFirstNameAndLastNameInputProps {
 }
 
 export const handleFirstNameAndLastNameInput = ({
+  e,
   firstName,
   setFirstName,
   lastName,
@@ -25,16 +27,11 @@ export const handleFirstNameAndLastNameInput = ({
     setData({ ...data, fullName });
   };
 
-  return useCallback(
-    (e: ChangeEvent<HTMLInputElement>): void => {
-      if (e.target.name === "First") {
-        setFirstName(e.target.value);
-        updateFullName(e.target.value, lastName);
-      } else if (e.target.name === "Last") {
-        setLastName(e.target.value);
-        updateFullName(firstName, e.target.value);
-      }
-    },
-    [setFirstName, lastName, setLastName, firstName, updateFullName]
-  );
+  if (e.target.name === "First") {
+    setFirstName(e.target.value);
+    updateFullName(e.target.value, lastName);
+  } else if (e.target.name === "Last") {
+    setLastName(e.target.value);
+    updateFullName(firstName, e.target.value);
+  }
 };
