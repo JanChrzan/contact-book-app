@@ -1,8 +1,12 @@
 # CONTACT BOOK
 
-The Contact Book is a web application built using React, TypeScript, Express, and MongoDB. It provides a simple and user-friendly interface for managing contacts. Users can register and log in to their accounts to access their contacts. The application provides features such as adding, editing, and removing contacts, as well as filtering contacts to facilitate searching.
+Contact-book is a sophisticated web application built with TypeScript, React, Tailwind, Node.js, Express, and MongoDB. It's a highly efficient contact management system that streamlines the way users search for and manage their contacts.
 
-The Contact Book's backend uses bcrypt for password encryption and provides error handling for various user input errors. The frontend provides a responsive UI with Tailwind CSS for styling.
+With its backend functions, Contact-book provides users with the ability to log in securely using their email and password. New users can easily register with a unique ID, full name, email, and password. The app also verifies the user's authentication and updates the user's IP address in the database. Contact information can be easily accessed with fields for a unique ID, owner ID, full name, address, email, phone number, and notes. Users can also edit their contacts to keep their information up to date. Finally, contacts can be removed from the database to ensure that users have complete control over their contact list.
+
+The Contact-book frontend is designed to be highly user-friendly, providing a search bar that makes it simple to find contacts quickly and easily. The application is styled with Tailwind, a utility-first CSS framework, and built with React, a popular JavaScript framework for building user interfaces.
+
+Overall, Contact-book is a powerful, all-in-one web application that gives users a comprehensive set of tools to manage their contacts with ease. Whether you're looking to keep track of personal or professional contacts, Contact-book is the perfect solution for anyone looking to stay organized and in control.
 
 ## Technology stack
 
@@ -16,7 +20,7 @@ The Contact Book's backend uses bcrypt for password encryption and provides erro
 ### Live: https://janchrzan-contactbook.netlify.app/
 </br>
 
-<a href="https://janchrzan-todoapp.netlify.app/" target="blank">
+<a href="https://janchrzan-contactbook.netlify.app/" target="blank">
 <img src="./src/assets/github/mockup.png" alt="my app" width="800" />
 </a>
 </br>
