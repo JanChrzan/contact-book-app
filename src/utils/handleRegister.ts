@@ -40,7 +40,7 @@ export const handleRegister = async ({
       }
     );
 
-    Cookies.set("token", response.data);
+    Cookies.set("token", response.data.data);
     setRegisterData({
       id: uuidv4(),
       fullName: "",

@@ -1,34 +1,16 @@
-import { Request, Response, Router } from "express";
-import { ContactService } from "../service/contactService";
+import { Router } from "express";
+import { ContactService } from "../service/contactService.js";
+import { createRouteHandler } from "../utils/createRouteHandler.js";
 
 export const appRouter: Router = Router();
 const contactService = new ContactService();
 
 appRouter
-  .post("/login", async (req: Request, res: Response): Promise<void> => {
-    await contactService.login(req, res);
-  })
-  .post("/register", async (req: Request, res: Response): Promise<void> => {
-    await contactService.register(req, res);
-  })
-  .post("/auth", async (req: Request, res: Response): Promise<void> => {
-    await contactService.authenticate(req, res);
-  })
-  .patch("/update", async (req: Request, res: Response): Promise<void> => {
-    await contactService.updateUser(req, res);
-  })
-  .get("/contact/:id", async (req: Request, res: Response): Promise<void> => {
-    await contactService.getContacts(req, res);
-  })
-  .post("/contact", async (req: Request, res: Response): Promise<void> => {
-    await contactService.addContact(req, res);
-  })
-  .delete(
-    "/contact/:id",
-    async (req: Request, res: Response): Promise<void> => {
-      await contactService.removeContact(req, res);
-    }
-  )
-  .put("/contact", async (req: Request, res: Response): Promise<void> => {
-    await contactService.editContact(req, res);
-  });
+  .post("/login", createRouteHandler(contactService.login))
+  .post("/register", createRouteHandler(contactService.register))
+  .post("/auth", createRouteHandler(contactService.authenticate))
+  .patch("/update", createRouteHandler(contactService.updateUser))
+  .get("/contact/:id", createRouteHandler(contactService.getContacts))
+  .post("/contact", createRouteHandler(contactService.addContact))
+  .delete("/contact/:id", createRouteHandler(contactService.removeContact))
+  .put("/contact", createRouteHandler(contactService.editContact));

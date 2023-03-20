@@ -45,7 +45,7 @@ const App: FC = () => {
         return;
       }
       try {
-        await axios.post(
+        const response = await axios.post(
           `${SERVER_URL}/api/auth`,
           {
             id: Cookies.get("token"),
@@ -54,7 +54,7 @@ const App: FC = () => {
             headers: { "header-ip": ip },
           }
         );
-        const token = Cookies.get("token");
+        const token = response.data.data;
         if (token !== undefined && token !== null) {
           setAuthorized(token);
         }

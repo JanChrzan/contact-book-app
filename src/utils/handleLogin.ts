@@ -27,11 +27,11 @@ export const handleLogin = async ({
     await axios.patch(
       `${SERVER_URL}/api/update`,
       {
-        id: response.data,
+        id: response.data.data,
       },
       { headers: { "header-ip": ip } }
     );
-    Cookies.set("token", response.data);
+    Cookies.set("token", response.data.data);
     navigate("/app");
   } catch (err: any) {
     console.log(err);

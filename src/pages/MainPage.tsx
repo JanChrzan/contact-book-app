@@ -26,7 +26,7 @@ const MainPage: FC<MainProps> = ({
         const response = await axios.get(
           `${SERVER_URL}/api/contact/${Cookies.get("token")}`
         );
-        setContacts(response.data);
+        setContacts(response.data.data);
       } catch (err: any) {
         console.log(err);
       }
