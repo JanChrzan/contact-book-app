@@ -1,8 +1,5 @@
-import axios from "axios";
-import Cookies from "js-cookie";
 import { FC, useEffect, useRef, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
-import { SERVER_URL } from "../config";
 import backgroundImg from "./assets/BG.svg";
 import Footer from "./components/major/Footer";
 import Header from "./components/major/Header";
@@ -11,7 +8,7 @@ import ErrorPage from "./pages/ErrorPage";
 import LoginPage from "./pages/LoginPage";
 import MainPage from "./pages/MainPage";
 import PrivateRoute from "./pages/PrivateRoute";
-import { getUserIp } from "./utils/getUserIp";
+import { authenticate } from "./utils/authenticate";
 import { handleParallaxEvent } from "./utils/handleParallaxEvent";
 import { ContactData } from "./utils/types/TypeContactData";
 import { MousePosition } from "./utils/types/TypeMousePosition";
@@ -38,47 +35,22 @@ const App: FC = () => {
   };
 
   useEffect(() => {
-    const authenticate = async () => {
-      const ip = await getUserIp();
-      if (Cookies.get("token") === undefined) {
-        setIsLoading(false);
-        return;
-      }
-      try {
-        const response = await axios.post(
-          `${SERVER_URL}/api/auth`,
-          {
-            id: Cookies.get("token"),
-          },
-          {
-            headers: { "header-ip": ip },
-          }
-        );
-        const token = response.data.data;
-        if (token !== undefined && token !== null) {
-          setAuthorized(token);
-        }
-        navigate("/app");
-        setIsLoading(false);
-      } catch {
-        Cookies.remove("token");
-        setIsLoading(false);
-      }
-    };
-    authenticate();
+    (async () => {
+      await authenticate({ setAuthorized, setIsLoading, navigate });
+    })();
   }, [navigate]);
 
   useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) =>
+      handleParallaxEvent({ e, setMousePosition });
+
     if (divRef.current) {
-      divRef.current.addEventListener("mousemove", (e) =>
-        handleParallaxEvent({ e, setMousePosition })
-      );
+      divRef.current.addEventListener("mousemove", handleMouseMove);
     }
+
     return () => {
       if (divRef.current) {
-        divRef.current.removeEventListener("mousemove", (e) =>
-          handleParallaxEvent({ e, setMousePosition })
-        );
+        divRef.current.removeEventListener("mousemove", handleMouseMove);
       }
     };
   }, [divRef]);

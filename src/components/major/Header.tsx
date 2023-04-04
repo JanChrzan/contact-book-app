@@ -29,8 +29,8 @@ const Header: FC<HeaderProps> = ({
           setSearchValue={setSearchValue}
         />
       ) : (
-        <h1 className="absolute font-Caveat text-4xl font-bold text-white sm:text-6xl">
-          CONTACT BOOK
+        <h1 className="absolute font-Caveat text-4xl font-bold uppercase text-white sm:text-6xl">
+          Contact book
         </h1>
       )}
     </header>
