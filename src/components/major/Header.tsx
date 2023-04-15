@@ -1,4 +1,4 @@
-import { Dispatch, FC, SetStateAction } from "react";
+import { Dispatch, SetStateAction } from "react";
 import headerImg from "../../assets/header.png";
 import SearchInput from "../minor/SearchInput";
 
@@ -9,12 +9,12 @@ type HeaderProps = {
   setSearchValue: Dispatch<SetStateAction<string>>;
 };
 
-const Header: FC<HeaderProps> = ({
+const Header = ({
   parallaxEffectStyles,
   authorized,
   searchValue,
   setSearchValue,
-}) => {
+}: HeaderProps) => {
   return (
     <header className="flex h-[20vh] items-center justify-center overflow-hidden">
       <img

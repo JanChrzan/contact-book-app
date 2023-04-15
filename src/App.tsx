@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import backgroundImg from "./assets/BG.svg";
 import Footer from "./components/major/Footer";
@@ -13,7 +13,7 @@ import { handleParallaxEvent } from "./utils/handleParallaxEvent";
 import { ContactData } from "./utils/types/TypeContactData";
 import { MousePosition } from "./utils/types/TypeMousePosition";
 
-const App: FC = () => {
+const App = () => {
   const [contacts, setContacts] = useState<ContactData[]>([]);
   const [showLoginForm, setShowLoginForm] = useState<boolean>(true);
   const [showHomePage, setShowHomePage] = useState<boolean>(true);

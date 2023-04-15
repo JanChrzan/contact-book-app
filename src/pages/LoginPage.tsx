@@ -1,4 +1,5 @@
-import { FC, useEffect, useState } from "react";
+import clsx from "clsx";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import ActionButton from "../components/minor/ActionButton";
@@ -17,7 +18,7 @@ type RegisterProps = {
   showLoginForm: boolean;
 };
 
-const LoginPage: FC<RegisterProps> = ({ showLoginForm }) => {
+const LoginPage = ({ showLoginForm }: RegisterProps) => {
   const [registerData, setRegisterData] = useState<RegisterFormData>({
     id: uuidv4(),
     fullName: "",
@@ -40,9 +41,10 @@ const LoginPage: FC<RegisterProps> = ({ showLoginForm }) => {
   return (
     <>
       <div
-        className={`${
-          isRegister ? "hidden" : "block"
-        } absolute m-2 flex max-h-[90%] w-11/12 flex-col rounded-2xl bg-Oxford-Blue py-4 px-5 sm:w-96`}
+        className={clsx(
+          isRegister ? "hidden" : "block",
+          "absolute m-2 flex max-h-[90%] w-11/12 flex-col rounded-2xl bg-Oxford-Blue px-5 py-4 sm:w-96"
+        )}
       >
         <Title text={showLoginForm ? "Welcome" : "Create account"} />
         <form
@@ -58,7 +60,7 @@ const LoginPage: FC<RegisterProps> = ({ showLoginForm }) => {
                   navigate,
                 });
           }}
-          className="my-auto flex flex-col items-center justify-between overflow-auto py-2 px-1 sm:py-4"
+          className="my-auto flex flex-col items-center justify-between overflow-auto px-1 py-2 sm:py-4"
         >
           {showLoginForm ? (
             <LoginForm loginData={loginData} setLoginData={setLoginData} />
@@ -85,7 +87,10 @@ const LoginPage: FC<RegisterProps> = ({ showLoginForm }) => {
         </form>
       </div>
       <div
-        className={`${isRegister ? "block" : "hidden"} my-5 p-3 text-center`}
+        className={clsx(
+          isRegister ? "block" : "hidden",
+          "my-5 p-3 text-center"
+        )}
       >
         <h3 className="text-2xl font-bold text-green-500">
           Your account has been created!

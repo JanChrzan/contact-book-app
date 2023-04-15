@@ -1,8 +1,6 @@
-import { FC } from "react";
-
-const ErrorPage: FC = () => {
+const ErrorPage = () => {
   return (
-    <div className="max-h-[90%] w-11/12 rounded-2xl bg-Oxford-Blue py-8 px-6 shadow-xl sm:w-96">
+    <div className="max-h-[90%] w-11/12 rounded-2xl bg-Oxford-Blue px-6 py-8 shadow-xl sm:w-96">
       <div className="flex flex-col items-center">
         <h2 className="text-6xl font-bold text-white sm:text-8xl xl:text-9xl">
           404

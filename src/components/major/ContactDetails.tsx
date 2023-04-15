@@ -1,4 +1,5 @@
-import { Dispatch, FC, SetStateAction, useEffect, useState } from "react";
+import clsx from "clsx";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { handleCancelChanges } from "../../utils/handleCancelChanges";
 import { handleDisableAddButton } from "../../utils/handleDisableAddButton";
 import { handleSaveChanges } from "../../utils/handleSaveChanges";
@@ -17,14 +18,14 @@ type ContactDetailsProps = {
   deleteSelectedContact: () => void;
 };
 
-const ContactDetails: FC<ContactDetailsProps> = ({
+const ContactDetails = ({
   contacts,
   setContacts,
   selectedContact,
   setSelectedContact,
   onClose,
   deleteSelectedContact,
-}) => {
+}: ContactDetailsProps) => {
   if (selectedContact === null || setSelectedContact === null) return null;
   const [isEditable, setIsEditable] = useState<boolean>(false);
   const [disableSaveButton, setDisableSaveButton] = useState<boolean>(true);
@@ -54,9 +55,10 @@ const ContactDetails: FC<ContactDetailsProps> = ({
             setSelectedContact,
           })
         }
-        className={`${
-          !isEditable && "flex-1 sm:justify-evenly"
-        } my-auto flex flex-col items-center justify-between overflow-auto px-1 py-2 sm:py-4`}
+        className={clsx(
+          !isEditable && "flex-1 sm:justify-evenly",
+          "my-auto flex flex-col items-center justify-between overflow-auto px-1 py-2 sm:py-4"
+        )}
       >
         {!isEditable && (
           <h2 className="mb-2 break-all text-2xl font-bold sm:text-4xl">

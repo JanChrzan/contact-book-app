@@ -1,5 +1,5 @@
 import Cookies from "js-cookie";
-import { Dispatch, FC, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { addNewContact } from "../../utils/addNewContact";
 import { handleDisableAddButton } from "../../utils/handleDisableAddButton";
@@ -14,11 +14,11 @@ type ContactSubmissionProps = {
   setContacts: Dispatch<SetStateAction<ContactData[]>>;
   setShowHomePage: Dispatch<SetStateAction<boolean>>;
 };
-const ContactSubmission: FC<ContactSubmissionProps> = ({
+const ContactSubmission = ({
   contacts,
   setContacts,
   setShowHomePage,
-}) => {
+}: ContactSubmissionProps) => {
   const [newContact, setNewContact] = useState<ContactData>({
     id: uuidv4(),
     ownerId: String(Cookies.get("token")),
@@ -31,7 +31,7 @@ const ContactSubmission: FC<ContactSubmissionProps> = ({
   const [errorMessage, setErrorMessage] = useState<string>("");
 
   return (
-    <div className="absolute m-2 flex h-[90%] w-11/12 flex-col rounded-2xl bg-Oxford-Blue py-4 px-5 xl:w-1/2">
+    <div className="absolute m-2 flex h-[90%] w-11/12 flex-col rounded-2xl bg-Oxford-Blue px-5 py-4 xl:w-1/2">
       <Title text={"Create new contact"} />
       <form
         onSubmit={(e) =>
@@ -44,7 +44,7 @@ const ContactSubmission: FC<ContactSubmissionProps> = ({
             setShowHomePage,
           })
         }
-        className="my-auto flex flex-col items-center justify-between overflow-auto py-2 px-1 sm:py-4"
+        className="my-auto flex flex-col items-center justify-between overflow-auto px-1 py-2 sm:py-4"
       >
         <ContactForm data={newContact} setData={setNewContact} />
         <ErrorMessage errorMessage={errorMessage} />

@@ -1,9 +1,7 @@
-import { FC } from "react";
-
 type ErrorMessageProps = {
   errorMessage: string;
 };
-const ErrorMessage: FC<ErrorMessageProps> = ({ errorMessage }) => {
+const ErrorMessage = ({ errorMessage }: ErrorMessageProps) => {
   return (
     <>
       {errorMessage && (

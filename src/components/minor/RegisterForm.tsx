@@ -1,4 +1,4 @@
-import { ChangeEvent, Dispatch, FC, SetStateAction, useCallback } from "react";
+import { ChangeEvent, Dispatch, SetStateAction, useCallback } from "react";
 import { handleChangeFormInputs } from "../../utils/handleChangeFormInputs";
 import { RegisterFormData } from "../../utils/types/TypeRegisterFormData";
 import { validateEmail } from "../../utils/validators/validateEmail";
@@ -12,10 +12,7 @@ export type RegisterFormProps = {
   setRegisterData: Dispatch<SetStateAction<RegisterFormData>>;
 };
 
-const RegisterForm: FC<RegisterFormProps> = ({
-  registerData,
-  setRegisterData,
-}) => {
+const RegisterForm = ({ registerData, setRegisterData }: RegisterFormProps) => {
   const handleChangeFormInputsUseCallback = useCallback(
     (e: ChangeEvent<HTMLInputElement>) =>
       handleChangeFormInputs({

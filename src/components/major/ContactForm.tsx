@@ -1,7 +1,6 @@
 import {
   ChangeEvent,
   Dispatch,
-  FC,
   SetStateAction,
   useCallback,
   useEffect,
@@ -23,7 +22,7 @@ export type AddContactProps = {
     | Dispatch<SetStateAction<ContactData | null>>;
 };
 
-const ContactForm: FC<AddContactProps> = ({ data, setData }) => {
+const ContactForm = ({ data, setData }: AddContactProps) => {
   const { fullName } = data;
   const [firstName, setFirstName] = useState<string>(
     fullName.split(" ")[0] || ""

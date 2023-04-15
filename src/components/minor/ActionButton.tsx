@@ -1,4 +1,4 @@
-import { FC } from "react";
+import clsx from "clsx";
 
 type ActionButtonProps = {
   text: string;
@@ -7,28 +7,26 @@ type ActionButtonProps = {
   color: string;
 };
 
-const ActionButton: FC<ActionButtonProps> = ({
+const ActionButton = ({
   text,
   disableStateButton = false,
   onClick,
   color,
-}) => {
+}: ActionButtonProps) => {
   const buttonType = onClick ? "button" : "submit";
-
-  const buttonBackgroundColor =
-    color === "green"
-      ? ["bg-green-700", "hover:bg-green-800"]
-      : ["bg-red-700", "hover:bg-red-800"];
 
   return (
     <button
-      className={`${
+      className={clsx(
         disableStateButton
-          ? `cursor-not-allowed brightness-50`
-          : `cursor-pointer ${buttonBackgroundColor[1]}`
-      } mt-2 sm:mt-5 ${
-        buttonBackgroundColor[0]
-      } rounded-full px-4 py-2 text-xs text-white duration-150 sm:min-w-[100px] sm:text-base`}
+          ? "cursor-not-allowed brightness-50"
+          : "cursor-pointer",
+        color === "green"
+          ? !disableStateButton && "hover:bg-green-800"
+          : !disableStateButton && "hover:bg-red-800",
+        color === "green" ? "bg-green-700" : "bg-red-700",
+        "mt-2 rounded-full px-4 py-2 text-xs text-white duration-150 sm:mt-5 sm:min-w-[100px] sm:text-base"
+      )}
       type={buttonType}
       disabled={disableStateButton}
       onClick={onClick}

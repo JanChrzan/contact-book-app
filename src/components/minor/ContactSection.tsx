@@ -1,11 +1,11 @@
-import { FC, ReactNode } from "react";
+import { ReactNode } from "react";
 
 type ContactSectionProps = {
   label: string;
   value: ReactNode;
 };
 
-const ContactSection: FC<ContactSectionProps> = ({ label, value }) => {
+const ContactSection = ({ label, value }: ContactSectionProps) => {
   return (
     <>
       {value ? (

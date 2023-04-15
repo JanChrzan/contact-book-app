@@ -1,9 +1,7 @@
-import axios from "axios";
-import Cookies from "js-cookie";
-import { Dispatch, FC, SetStateAction, useEffect } from "react";
-import { SERVER_URL } from "../../config";
+import { Dispatch, SetStateAction, useEffect } from "react";
 import ContactContainer from "../components/major/ContactContainer";
 import ContactSubmission from "../components/major/ContactSubmission";
+import { getContacts } from "../utils/getContacts";
 import { ContactData } from "../utils/types/TypeContactData";
 
 type MainProps = {
@@ -13,26 +11,17 @@ type MainProps = {
   setContacts: Dispatch<SetStateAction<ContactData[]>>;
   searchValue: string;
 };
-const MainPage: FC<MainProps> = ({
+const MainPage = ({
   showHomePage,
   setShowHomePage,
   contacts,
   setContacts,
   searchValue,
-}) => {
+}: MainProps) => {
   useEffect(() => {
-    const getContacts = async () => {
-      try {
-        const response = await axios.get(
-          `${SERVER_URL}/api/contact/${Cookies.get("token")}`
-        );
-        setContacts(response.data.data);
-      } catch (err: any) {
-        console.log(err);
-      }
-    };
-
-    getContacts();
+    (async () => {
+      await getContacts({ setContacts });
+    })();
   }, []);
 
   return showHomePage ? (

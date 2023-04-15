@@ -1,4 +1,4 @@
-import { ChangeEventHandler, FC, useEffect, useState } from "react";
+import { ChangeEventHandler, useEffect, useState } from "react";
 
 type FormInputProps = {
   textLabel: string;
@@ -8,14 +8,14 @@ type FormInputProps = {
   onChange: ChangeEventHandler<HTMLInputElement>;
   validator: (value: string, value2?: string) => string;
 };
-const FormInput: FC<FormInputProps> = ({
+const FormInput = ({
   textLabel,
   name,
   type,
   value,
   onChange,
   validator,
-}) => {
+}: FormInputProps) => {
   const [errorMessage, setErrorMessage] = useState<string>("");
 
   useEffect(() => {

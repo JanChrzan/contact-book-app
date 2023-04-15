@@ -1,4 +1,4 @@
-import { Dispatch, FC, SetStateAction } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { useNavigate } from "react-router-dom";
 import { handleLogout } from "../../utils/handleLogout";
 import NavbarButton from "../minor/NavbarButton";
@@ -12,14 +12,14 @@ type NavbarProps = {
   setAuthorized: Dispatch<SetStateAction<string>>;
 };
 
-const Navbar: FC<NavbarProps> = ({
+const Navbar = ({
   showLoginForm,
   setShowLoginForm,
   showHomePage,
   setShowHomePage,
   authorized,
   setAuthorized,
-}) => {
+}: NavbarProps) => {
   const navigate = useNavigate();
 
   return (

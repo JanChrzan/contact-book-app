@@ -1,4 +1,5 @@
-import { Dispatch, FC, SetStateAction } from "react";
+import clsx from "clsx";
+import { Dispatch, SetStateAction } from "react";
 import { handleButtonClick } from "../../utils/handleButtonClick";
 
 type NavbarButtonProps = {
@@ -8,21 +9,21 @@ type NavbarButtonProps = {
   setState?: Dispatch<SetStateAction<boolean>>;
 };
 
-const NavbarButton: FC<NavbarButtonProps> = ({
+const NavbarButton = ({
   text,
   state,
   onClick,
   setState,
-}) => {
+}: NavbarButtonProps) => {
   return (
     <button
-      className={`rounded py-2 px-4 text-white ${
-        onClick
-          ? "bg-rose-600 duration-150 hover:bg-rose-800"
-          : state
-          ? "bg-rose-600"
-          : "duration-150 hover:bg-gray-700"
-      }`}
+      className={clsx(
+        onClick && "bg-rose-600 duration-150 hover:bg-rose-800",
+        state
+          ? !onClick && "bg-rose-600"
+          : !onClick && "duration-150 hover:bg-gray-700",
+        "rounded px-4 py-2 text-white"
+      )}
       onClick={() => handleButtonClick({ onClick, setState, text })}
     >
       {text}

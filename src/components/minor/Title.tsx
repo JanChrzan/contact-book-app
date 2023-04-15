@@ -1,9 +1,7 @@
-import { FC } from "react";
-
 type TitleProps = {
   text: string;
 };
-const Title: FC<TitleProps> = ({ text }) => {
+const Title = ({ text }: TitleProps) => {
   return (
     <>
       <h2 className="pb-4 text-center text-2xl text-white">{text}</h2>

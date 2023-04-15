@@ -1,4 +1,4 @@
-import { ChangeEvent, Dispatch, FC, SetStateAction, useCallback } from "react";
+import { ChangeEvent, Dispatch, SetStateAction, useCallback } from "react";
 import { handleChangeFormInputs } from "../../utils/handleChangeFormInputs";
 import { LoginFormData } from "../../utils/types/TypeLoginFormData";
 import { validateEmail } from "../../utils/validators/validateEmail";
@@ -10,7 +10,7 @@ export type LoginFormProps = {
   setLoginData: Dispatch<SetStateAction<LoginFormData>>;
 };
 
-const LoginForm: FC<LoginFormProps> = ({ loginData, setLoginData }) => {
+const LoginForm = ({ loginData, setLoginData }: LoginFormProps) => {
   const handleChangeFormInputsUseCallback = useCallback(
     (e: ChangeEvent<HTMLInputElement>) =>
       handleChangeFormInputs({ e, data: loginData, setData: setLoginData }),

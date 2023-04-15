@@ -1,11 +1,11 @@
-import { Dispatch, FC, SetStateAction } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { handleSearchInputChange } from "../../utils/handleSearchInputChange";
 
 interface SearchInputProps {
   searchValue: string;
   setSearchValue: Dispatch<SetStateAction<string>>;
 }
-const SearchInput: FC<SearchInputProps> = ({ searchValue, setSearchValue }) => {
+const SearchInput = ({ searchValue, setSearchValue }: SearchInputProps) => {
   return (
     <div className="absolute mx-auto w-11/12 md:w-2/3 lg:w-1/2">
       <div className="flex h-12 w-full items-center overflow-hidden rounded-lg bg-white focus-within:shadow-lg">

@@ -1,4 +1,4 @@
-import { Dispatch, FC, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { handleContactClick } from "../../utils/handleContactClick";
 import { handleContactDetailsClose } from "../../utils/handleContactDetailsClose";
 import { removeSelectedContact } from "../../utils/removeSelectedContact";
@@ -12,18 +12,18 @@ type ContactContainerProps = {
   setContacts: Dispatch<SetStateAction<ContactData[]>>;
   searchValue: string;
 };
-const ContactContainer: FC<ContactContainerProps> = ({
+const ContactContainer = ({
   contacts,
   setContacts,
   searchValue,
-}) => {
+}: ContactContainerProps) => {
   const [selectedContact, setSelectedContact] = useState<ContactData | null>(
     null
   );
   const [showDetails, setShowDetails] = useState<boolean>(false);
 
   return (
-    <div className="absolute m-2 flex h-[90%] w-11/12 flex-col rounded-2xl bg-Oxford-Blue py-4 px-5 md:w-2/3 lg:w-1/2">
+    <div className="absolute m-2 flex h-[90%] w-11/12 flex-col rounded-2xl bg-Oxford-Blue px-5 py-4 md:w-2/3 lg:w-1/2">
       {showDetails ? (
         <ContactDetails
           contacts={contacts}
