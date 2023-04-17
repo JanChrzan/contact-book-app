@@ -14,8 +14,10 @@ Overall, Contact-book is a powerful, all-in-one web application that gives users
 <img src="./src/assets/github/react.svg" alt="react" width="40" height="40"/> &nbsp;&nbsp;&nbsp;
 <img src="./src/assets/github/tailwind.svg" alt="tailwind" width="40" height="40"/> &nbsp;&nbsp;&nbsp;
 <img src="./src/assets/github/nodejs.svg" alt="nodejs" width="40" height="40"/>  &nbsp;&nbsp;&nbsp; 
-<img src="./src/assets/github/express.svg" alt="express" width="40" height="40"/> &nbsp;&nbsp;&nbsp;
-<img src="./src/assets/github/mongodb.svg" alt="mongodb" height="40"/> &nbsp;&nbsp;&nbsp;
+<img src="./src/assets/github/express.svg" alt="express" width="40" height="40"/> &nbsp;&nbsp;
+<img src="./src/assets/github/mongodb.svg" alt="mongodb" height="40"/> &nbsp;
+<img src="./src/assets/github/jest.svg" alt="jest" height="40"/> &nbsp;
+<img src="./src/assets/github/vite.svg" alt="vite" height="40"/>
 
 ### Live: https://janchrzan-contactbook.netlify.app/
 </br>
