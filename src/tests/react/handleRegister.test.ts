@@ -1,8 +1,9 @@
+import "@testing-library/jest-dom/extend-expect";
 import axios from "axios";
 import { FormEvent } from "react";
 import { SERVER_URL } from "../../../config";
-import { handleRegister } from "../../utils/handleRegister";
 import { getUserIp } from "../../utils/getUserIp";
+import { handleRegister } from "../../utils/handleRegister";
 import { RegisterFormData } from "../../utils/types/TypeRegisterFormData";
 
 jest.mock("axios");
