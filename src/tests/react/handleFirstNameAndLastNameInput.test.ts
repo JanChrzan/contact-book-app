@@ -1,3 +1,4 @@
+import { ChangeEvent } from "react";
 import { handleFirstNameAndLastNameInput } from "../../utils/handleFirstNameAndLastNameInput";
 import { ContactData } from "../../utils/types/TypeContactData";
 
@@ -17,7 +18,7 @@ describe("handleFirstNameAndLastNameInput", () => {
     };
     const e = {
       target: { name: "First", value: "John" },
-    } as any;
+    } as ChangeEvent<HTMLInputElement>;
 
     handleFirstNameAndLastNameInput({
       e,

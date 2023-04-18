@@ -49,7 +49,7 @@ export const addNewContact = async (
     setShowHomePage(true);
     setErrorMessage("");
   } catch (err: any) {
-    console.log(err);
+    console.error(err);
     if (err.response) {
       setErrorMessage(err.response.data.message);
     } else {

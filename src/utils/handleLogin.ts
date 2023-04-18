@@ -34,7 +34,6 @@ export const handleLogin = async ({
     Cookies.set("token", response.data.data);
     navigate("/app");
   } catch (err: any) {
-    console.log(err);
     if (err.response) {
       setErrorMessage(err.response.data.message);
     } else {

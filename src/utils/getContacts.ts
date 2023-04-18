@@ -15,6 +15,6 @@ export const getContacts = async ({ setContacts }: GetContactsProps) => {
     );
     setContacts(response.data.data);
   } catch (err: any) {
-    console.log(err);
+    console.error(err);
   }
 };

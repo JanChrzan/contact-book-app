@@ -10,7 +10,7 @@ import Title from "../components/minor/Title";
 import { handleDisableLoginButton } from "../utils/handleDisableLoginButton";
 import { handleLogin } from "../utils/handleLogin";
 import { handleRegister } from "../utils/handleRegister";
-import { handleRegisterButton } from "../utils/handleRegisterButton";
+import { handleDisableRegisterButton } from "../utils/handleDisableRegisterButton";
 import { LoginFormData } from "../utils/types/TypeLoginFormData";
 import { RegisterFormData } from "../utils/types/TypeRegisterFormData";
 
@@ -80,7 +80,7 @@ const LoginPage = ({ showLoginForm }: RegisterProps) => {
           ) : (
             <ActionButton
               text={"Sign Up"}
-              disableStateButton={handleRegisterButton(registerData)}
+              disableStateButton={handleDisableRegisterButton(registerData)}
               color={"green"}
             />
           )}

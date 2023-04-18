@@ -33,4 +33,11 @@ describe("handleDisableLoginButton", () => {
     };
     expect(handleDisableLoginButton(newLoginData)).toBe(true);
   });
+  it("returns false if all fields are valid", () => {
+    const newLoginData: LoginFormData = {
+      email: "john@example.com",
+      password: "123456789",
+    };
+    expect(handleDisableLoginButton(newLoginData)).toBe(false);
+  });
 });

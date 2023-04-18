@@ -1,3 +1,4 @@
+import { ChangeEvent } from "react";
 import { handleChangeFormInputs } from "../../utils/handleChangeFormInputs";
 
 describe("handleChangeFormInputs", () => {
@@ -6,7 +7,7 @@ describe("handleChangeFormInputs", () => {
     const data = { name: "", email: "" };
     const e = {
       target: { name: "name", value: "John Doe" },
-    } as any;
+    } as ChangeEvent<HTMLInputElement>;
 
     handleChangeFormInputs({ e, data, setData });
 

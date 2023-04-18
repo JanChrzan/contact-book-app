@@ -4,7 +4,7 @@ import { validateFullName } from "./validators/validateFullName";
 import { validatePassword } from "./validators/validatePassword";
 import { validateSecondPassword } from "./validators/validateSecondPassword";
 
-export const handleRegisterButton = (registerData: RegisterFormData) =>
+export const handleDisableRegisterButton = (registerData: RegisterFormData) =>
   Boolean(
     validateFullName(registerData.fullName) ||
       validateEmail(registerData.email) ||
