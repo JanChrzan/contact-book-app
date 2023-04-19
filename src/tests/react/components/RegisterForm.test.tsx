@@ -1,11 +1,12 @@
 import "@testing-library/jest-dom/extend-expect";
 import { fireEvent, render } from "@testing-library/react";
 import React from "react";
-import RegisterForm from "../../components/minor/RegisterForm";
+import RegisterForm from "../../../components/minor/RegisterForm";
 
-describe("RegisterForm component", () => {
+describe("RegisterForm components", () => {
+  const setRegisterData = jest.fn();
+
   it("renders the form inputs", () => {
-    const setRegisterData = jest.fn();
     const { getByLabelText } = render(
       <RegisterForm
         registerData={{
@@ -25,7 +26,6 @@ describe("RegisterForm component", () => {
   });
 
   it("calls setRegisterData on input change", () => {
-    const setRegisterData = jest.fn();
     const { getByLabelText } = render(
       <RegisterForm
         registerData={{

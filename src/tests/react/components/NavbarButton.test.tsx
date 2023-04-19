@@ -1,9 +1,9 @@
 import "@testing-library/jest-dom/extend-expect";
 import { fireEvent, render } from "@testing-library/react";
 import React from "react";
-import NavbarButton from "../../components/minor/NavbarButton";
+import NavbarButton from "../../../components/minor/NavbarButton";
 
-describe("NavbarButton", () => {
+describe("NavbarButton components", () => {
   it("calls onClick when clicked", () => {
     const onClick = jest.fn();
     const text = "Test Button";

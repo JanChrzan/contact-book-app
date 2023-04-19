@@ -1,11 +1,12 @@
 import "@testing-library/jest-dom/extend-expect";
 import { fireEvent, render } from "@testing-library/react";
 import React from "react";
-import SearchInput from "../../components/minor/SearchInput";
+import SearchInput from "../../../components/minor/SearchInput";
 
-describe("SearchInput component", () => {
+describe("SearchInput components", () => {
+  const setSearchValue = jest.fn();
+
   it("renders the search input", () => {
-    const setSearchValue = jest.fn();
     const { getByPlaceholderText } = render(
       <SearchInput searchValue="" setSearchValue={setSearchValue} />
     );
@@ -13,7 +14,6 @@ describe("SearchInput component", () => {
   });
 
   it("calls setSearchValue on input change", () => {
-    const setSearchValue = jest.fn();
     const { getByPlaceholderText } = render(
       <SearchInput searchValue="" setSearchValue={setSearchValue} />
     );
