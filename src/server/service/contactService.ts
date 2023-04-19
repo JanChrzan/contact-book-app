@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt";
 import { Request, Response } from "express";
-import { Contact, IContact } from "../schema/contactSchema.js";
-import { IUser, User } from "../schema/userSchema.js";
+import { Contact, IContact } from "../schema/contactSchema";
+import { IUser, User } from "../schema/userSchema";
 import {
   ContactNotFoundError,
   InvalidCredentialsError,
@@ -10,7 +10,7 @@ import {
   UnauthorizedError,
   UserAlreadyExistsError,
   UserNotFoundError,
-} from "../utils/Errors.js";
+} from "../utils/Errors";
 
 export class ContactService {
   public async login(

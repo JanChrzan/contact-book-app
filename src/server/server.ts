@@ -2,7 +2,7 @@ import express from "express";
 import { set, connect, ConnectOptions } from "mongoose";
 import { config } from "dotenv";
 import cors from "cors";
-import { appRouter } from "./routes/appRouter.js";
+import { appRouter } from "./routes/appRouter";
 
 config();
 

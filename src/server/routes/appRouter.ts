@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { ContactService } from "../service/contactService.js";
-import { createRouteHandler } from "../utils/createRouteHandler.js";
+import { ContactService } from "../service/contactService";
+import { createRouteHandler } from "../utils/createRouteHandler";
 
 export const appRouter: Router = Router();
 const contactService = new ContactService();
