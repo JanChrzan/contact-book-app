@@ -50,6 +50,26 @@ Start server
   node server.js
 ```
 
+### Tests
+
+Start tests
+
+```bash
+  npm run test:react && npm run test:express
+```
+
+Start Front-end tests
+
+```bash
+  npm run test:react
+```
+
+Start Back-end tests
+
+```bash
+  npm run test:express
+```
+
 </br>
     
     

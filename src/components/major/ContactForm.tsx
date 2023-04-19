@@ -56,7 +56,7 @@ const ContactForm = ({ data, setData }: AddContactProps) => {
       setFirstName("");
       setLastName("");
     }
-  }, [fullName, setFirstName, setLastName]);
+  }, [fullName]);
 
   return (
     <div className="w-full">

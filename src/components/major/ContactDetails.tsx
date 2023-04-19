@@ -42,7 +42,7 @@ const ContactDetails = ({
 
   return (
     <div className="flex h-full w-full flex-col break-words bg-Oxford-Blue text-white">
-      {isEditable && <Title text={"Edit contact"} />}
+      <Title text={"Contact details"} />
       <form
         onSubmit={(e) =>
           handleSaveChanges({
